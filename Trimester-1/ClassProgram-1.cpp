@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    double longFloat = 7.8;
+    double longFloat = 7.9;
 
     cout<<longFloat<<endl;
 

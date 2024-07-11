@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
 if(false)
-cout<<"First if is selected"<<endl; //If this is removed then last statement is printed
+cout<<"First if is selected"<<endl; //If this is removed then last statement is printed or else second else is printed 
     if(false)
         cout<<"Second if is selected"<<endl;
 else

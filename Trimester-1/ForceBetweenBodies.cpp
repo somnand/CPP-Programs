@@ -18,7 +18,7 @@ int main()
 
 
 
-    //Calculating the Graviational Force between them
+    //Calculating the Gravitational Force between them
 
     float force = G*firstMass*secondMass/pow(distance,2);
 

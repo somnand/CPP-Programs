@@ -1,3 +1,8 @@
+/**
+ * This program tests Arithmetic Error in C++. 
+ * Currently we are not handling the exception.
+ * 
+*/
 #include<iostream>
 using namespace std;
 
