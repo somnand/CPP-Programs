@@ -1,4 +1,10 @@
 /**
+ * Print a snake in this pattern 
+ * ###
+ * ..#
+ * ###
+ * #..
+ * ###
  * 
  */
 
@@ -7,8 +13,6 @@ using namespace std;
 
 void snake(int r, int c)
 {
-    bool rightSide=true;
-    
     for(int i=0;i<r;i++)
     {
         for(int j=0;j<c;j++)
@@ -19,13 +23,13 @@ void snake(int r, int c)
             }
             else //Odd row
             {
-                if(rightSide && j==c-1)
+                if(i%4==1 && j==c-1)//Condition for right print
                 {
-                    cout<<"#"; rightSide=false;
+                    cout<<"#"; 
                 }
-                else if(!rightSide && j==0)
+                else if(i%4==3 && j==0)//Condition for left print
                 {
-                    cout<<"#"; rightSide=true;
+                    cout<<"#";
                 }
                 else
                 {
