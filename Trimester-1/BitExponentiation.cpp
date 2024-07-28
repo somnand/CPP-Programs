@@ -1,39 +1,59 @@
+/**
+ * This program finds out typically large powers. 
+ * Using two methods 1. Normal multiplication 2. Improved Bit Exponent
+ * 
+ * TODO : Find a way to store > 2^31 
+ */
+
 #include<iostream>
-#include<time.h> 
+#include<chrono>
 
 using namespace std;
 
 unsigned int exponent(int x,int y)
 {
-    for(int i=0;i<y;i++)
+    unsigned long long product=1;
+    for(int i=1;i<=y;i++)
     {
-        x = x * x;
+        product*=x;
     }
-    return x;  // Returns the final result after squaring x y times.
+    return product;  // Returns the final result after squaring x y times.
 }
 /*
 This function uses the concept of product sequence
 */
-unsigned int improvedExponent(int x,int y)
+unsigned int improvedExponent(int x,int n)
 {
-    unsigned int productSequence=1;    
+    unsigned long long productSequence=x;
+    unsigned long long product = 1;    
 
-    while(y>0)
+    while(n>0)
     {
-        if(y%2==1)
-            productSequence = productSequence * x;           
-
-        y=y/2;    
+        if(n%2==1)
+        {
+            product = product * productSequence;
+        }            
+        n=n/2;
+        productSequence = productSequence * productSequence;
     }
 
-    return productSequence;
+    return product;
 
 }
 
 int main()
 {
-    unsigned int result = exponent(5,23);
-    cout<<"Result : "<<result<<endl;
-    result = improvedExponent(5,23);
-    cout<<"Result : "<<result<<endl;
+    unsigned long long result;
+
+    auto start = chrono::high_resolution_clock::now();
+    result = improvedExponent(2,31);
+    auto end = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    cout<<"Result (improved): "<<result<<" time taken : "<<duration.count()<<endl;
+
+    start = chrono::high_resolution_clock::now();
+    result = exponent(2,31);
+    end = chrono::high_resolution_clock::now();
+    duration = chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    cout<<"Result : "<<result<<" time taken : "<<duration.count()<<endl;    
 }

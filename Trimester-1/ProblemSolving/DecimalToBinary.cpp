@@ -2,22 +2,22 @@
  * WAP to return Binary representation of a number 
  */
 #include<iostream>
+#include<cmath>
 using namespace std;
 
 void binary(int n)
 {
-    unsigned int binary;
+    int binary[(int)(log(n)/log(2))]; // Taking log(base2) of n
+    int i=0;
     while(n>=1)
     {
-        if(n%2==1)
-            binary+=1;
-        else
-            binary+=0;
-        
+        binary[i]=n%2;
         n=n/2;
-        binary*=10;                
+        i++;        
     }
-    cout<<binary<<endl;
+    for(int j=i-1;j>=0;j--)
+        cout<<binary[j];
+    cout<<endl;
 }
 
 int main()

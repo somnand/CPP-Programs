@@ -10,11 +10,11 @@ void arrayUsingPointer();
 
 int main()
 {
-    //sizeofPointer();
-    //array_pointer();
-    //segmentation_fault();
+    sizeofPointer();
+    array_pointer();
+    //segmentation_fault(); //Uncomment this function only if you want to create a segmentation fault
     arrayUsingPointer();
-    //const_pointer();
+    const_pointer();
     return 0;
 }
 
@@ -27,11 +27,11 @@ void sizeofPointer()
     cout<<"Address : "<<p<<endl;
 }
 
-void segmentation_fault()
-{
-    // void null_var = NULL;
-    // int *nul_ptr = &(null_var); //NOT WORKING
-    // cout<<nul_ptr<<endl;
+void segmentation_fault()//WARNING : Run this function only if you want to create a segmentation fault
+{    
+    int null_var = NULL;//TODO : Find the correct datatype
+    int *nul_ptr = &(null_var); //SEGMENTATION CODE ERROR
+    cout<<nul_ptr<<endl;
 }
 
 void array_pointer()
