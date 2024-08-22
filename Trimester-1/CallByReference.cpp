@@ -7,6 +7,7 @@ using namespace std;
 
 void swap(int,int);
 void swap(int*, int*); //This is overload for call by Reference
+void swapNew(int*,int*);
 
 void swap(int a,int b)
 {
@@ -24,6 +25,7 @@ void swap(int* a,int* b)
     *b=temp;
 }
 
+//Double pointer approach
 void swapNew(int* p1,int* p2)
 {
     int* t;

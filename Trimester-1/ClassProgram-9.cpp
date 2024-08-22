@@ -16,9 +16,20 @@ void print(int x)
     cout<<"Bye "<<x<<endl;
     return;
 }
-
+//TODO Print array by recursion 
+void printArray(int a[],int i,int N)
+{
+    if(i==N)
+        return;
+    cout<<a[i]<<" ";
+    i++;
+    printArray(a,i,N);    
+}
 
 int main()
 {
-    print(3);
+    int arr[5]={1,2,3,4,5};
+    printArray(arr,0,5);
+
+    //print(3);
 }
