@@ -33,3 +33,8 @@
 
 #VS Code Configurations
 .vscode
+/.metadata/
+/Trimester-1/*.cproject
+/Trimester-1/*.gitignore
+/Trimester-1/*.project
+/Trimester-1/.settings

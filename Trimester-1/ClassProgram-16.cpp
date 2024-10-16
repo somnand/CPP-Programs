@@ -6,6 +6,13 @@
 #include<string>
 using namespace std;
 
+void compare()
+{
+    char s1[]="acb";//This is later in the dictionary and thus given higher value
+    char s2[]="abc";
+
+    cout<<"Comparing "<<s1<<" and "<<s2<<" : "<<strcmp(s1,s2)<<endl;
+}
 
 int main()
 {
@@ -26,6 +33,8 @@ int main()
 
     string s3 = s1+s2;
     cout<<s3<<endl;
+
+    compare();
 
     return 0;
 }
