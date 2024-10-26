@@ -1,10 +1,12 @@
-#include<vector>
 #include<string>
+#include<vector>
+#include"Point.h"
 using namespace std;
 
 class FileUtils
 {
     public:
-    static vector<string> readDatasetFromFile();
+    static vector<Point> readDatasetFromFile();
     static void readDatasetFromFile(int startPos);
+    static Point extractAndFormPoint(string line);
 };
