@@ -1,26 +1,35 @@
 #include<fstream>
 #include<iostream>
+#include<vector>
+#include<string>
 #include"FileUtils.h"
+#define SKIP_TEXT 232
 using namespace std;
 
-void FileUtils::readDatasetFromFile()
+vector<string> FileUtils::readDatasetFromFile()
 {
     ifstream infile("xqf131.tsp");
+    vector<string> lines;
+    string line;
     
     if(!infile)
        cerr<<"Error in Creating file"<<endl;
 
-    if(infile.is_open())
-        cout<<"File is opened !! "<<endl;
-    else
-        cout<<"Error in opening!!"<<endl;
+    infile.seekg(SKIP_TEXT);
+    // if(infile.is_open())
+    //     cout<<"File is opened !! "<<endl;
+    // else
+    //     cout<<"Error in opening!!"<<endl;
 
-    string line1,line2;
-    //infile>>line; //Operator overloading
-    getline(infile,line1);
-    getline(infile,line2);
+    
+    while (getline(infile,line))
+    {
+        lines.push_back(line);
+        cout<<line<<endl;
+        break;
+    }
+    
     infile.close(); 
 
-    cout<<"Data : "<<line1<<endl;
-    cout<<"Data : "<<line2<<endl;
+    return lines;
 }
