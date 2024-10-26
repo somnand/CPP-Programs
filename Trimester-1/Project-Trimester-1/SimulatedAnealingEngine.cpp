@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
     vector<Point> points;
-    Point p(1,0,13);
+    Point p(0,13);
     points.push_back(p);
 
     FileUtils::readDatasetFromFile();

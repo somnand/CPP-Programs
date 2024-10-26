@@ -2,14 +2,13 @@
 #include"Point.h"
 using namespace std;
 
-Point::Point(int x,int y,int distance)
+Point::Point(int x,int y)
 {
     this->x=x;
-    this->y=y;
-    this->distance=distance;
+    this->y=y;    
 }
 
 string Point::toString()
 {
-    return "("+to_string(x)+" "+to_string(y)+")= "+to_string(distance);
+    return "("+to_string(x)+" "+to_string(y)+")";
 }

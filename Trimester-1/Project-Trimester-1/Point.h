@@ -7,10 +7,9 @@ class Point
 {
     private:
     int x;
-    int y;
-    int distance;
+    int y;    
 
     public:
-    Point(int x,int y,int distance);
+    Point(int x,int y);
     string toString();    
 };
