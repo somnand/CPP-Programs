@@ -20,6 +20,36 @@ void dfs(vector<int> graph[],int verticeSize,int currNode,bool visited[])
     }    
 }
 
+/**
+ * BFS traversal on the Graph Iteratively
+ * Inputs : Graph, Current/Source node/visited array
+ */
+void bfs(vector<int> graph[],int verticeSize,int source)
+{
+    queue<int> bfsQ;
+    bool visited[verticeSize]={false};
+    bfsQ.push(source);
+    visited[source]=true;    
+
+    while(!bfsQ.empty())
+    {
+        int curr=bfsQ.front();
+        bfsQ.pop();
+        cout<<curr<<" ";
+        //visited[curr]=true;//Later analyse this why this is wrong.
+
+        for(auto neighbor : graph[curr])
+        {
+            if(!visited[neighbor])
+            {
+                bfsQ.push(neighbor);
+                visited[neighbor]=true;
+            }
+        }
+    }
+    cout<<endl;
+}
+
 int main()
 {
     int V=5;
@@ -39,7 +69,13 @@ int main()
     bool visited[V]={false};
     //cout<<endl;//To help observe output in debug mode(Uncomment)
 
+
+    cout<<"DFS Traversal "<<endl;
     dfs(graph,V,0,visited);
+    cout<<endl;
+    cout<<"BFS Traversal "<<endl;
+    bfs(graph,V,0);
+    cout<<endl;
     
     return 0;
 }
