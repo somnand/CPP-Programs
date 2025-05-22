@@ -56,6 +56,39 @@ public:
         }
         return root;
     }
+
+    TreeNode* insertNodeIterative(int x)
+    {
+        if(bstroot==NULL)
+            return new TreeNode(x);
+
+        cout<<"Here:65"<<endl;
+
+        TreeNode* dummy=bstroot;
+        while(dummy->left!=NULL || dummy->right!=NULL)
+        {
+            if(x < dummy->data)
+            {
+                dummy=dummy->left;
+            }
+            else if(x > dummy->data)
+            {
+                dummy=dummy->right;
+            }                       
+        }
+        cout<<"Here:80"<<endl;
+
+        if(x < dummy->data)
+            dummy->left = new TreeNode(x);
+        else
+            dummy->right = new TreeNode(x);
+
+        cout<<"Here:87"<<endl;    
+
+        return bstroot;
+    }
+
+
     bool searchRecursive(TreeNode* root, int x) {
         if (root == NULL)
             return false;
@@ -90,7 +123,9 @@ int main()
     BST bst;
     bst.insertNode(18);
     bst.insertNode(6);
-    bst.insertNode(20);
+    //bst.insertNodeIterative(6);
+    //bst.insertNode(20);
+    bst.insertNodeIterative(20);
     bst.insertNode(19);
     bst.insertNode(2);
     bst.insertNode(8);
