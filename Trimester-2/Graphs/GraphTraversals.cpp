@@ -17,7 +17,37 @@ void dfs(vector<int> graph[],int verticeSize,int currNode,bool visited[])
         int neighbor = graph[currNode][i];
         if(!visited[neighbor])
             dfs(graph,verticeSize,neighbor,visited);
-    }    
+    }
+}
+
+void dfsIterative(vector<int> graph[],int verticeSize,int source)
+{
+    stack<int> dfsStk;
+    bool visited[verticeSize]={false};
+    dfsStk.push(source);
+    
+    while(!dfsStk.empty())
+    {
+        int curr = dfsStk.top();//Fetching the first entered node from Stack
+        dfsStk.pop();
+        
+        if(!visited[curr])
+        {
+            visited[curr]=true;
+            cout<<curr<<" ";
+        }
+        
+
+        for(auto neighbor : graph[curr])
+        {
+            if(!visited[neighbor])
+            {
+                dfsStk.push(neighbor);
+            }
+        }
+        
+    }
+    cout<<endl;
 }
 
 /**
@@ -29,21 +59,23 @@ void bfs(vector<int> graph[],int verticeSize,int source)
     queue<int> bfsQ;
     bool visited[verticeSize]={false};
     bfsQ.push(source);
-    visited[source]=true;    
 
     while(!bfsQ.empty())
     {
-        int curr=bfsQ.front();
+        int curr = bfsQ.front();//Fetching the first entered node from Queue
         bfsQ.pop();
-        cout<<curr<<" ";
-        //visited[curr]=true;//Later analyse this why this is wrong.
+        
+        if(!visited[curr])
+        {
+            visited[curr]=true;
+            cout<<curr<<" ";
+        }
 
         for(auto neighbor : graph[curr])
         {
             if(!visited[neighbor])
             {
                 bfsQ.push(neighbor);
-                visited[neighbor]=true;
             }
         }
     }
@@ -75,6 +107,8 @@ int main()
     cout<<endl;
     cout<<"BFS Traversal "<<endl;
     bfs(graph,V,0);
+    cout<<"DFS Traversal(Iterative) "<<endl;
+    dfsIterative(graph,V,0);
     cout<<endl;
     
     return 0;
