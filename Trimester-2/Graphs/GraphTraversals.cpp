@@ -31,19 +31,14 @@ void dfsIterative(vector<int> graph[],int verticeSize,int source)
         int curr = dfsStk.top();//Fetching the first entered node from Stack
         dfsStk.pop();
         
-        if(!visited[curr])
-        {
-            visited[curr]=true;
-            cout<<curr<<" ";
-        }
-        
+        if(visited[curr]) continue;
+
+        visited[curr]=true;
+        cout<<curr<<" ";
 
         for(auto neighbor : graph[curr])
         {
-            if(!visited[neighbor])
-            {
-                dfsStk.push(neighbor);
-            }
+            dfsStk.push(neighbor);            
         }
         
     }
@@ -64,19 +59,15 @@ void bfs(vector<int> graph[],int verticeSize,int source)
     {
         int curr = bfsQ.front();//Fetching the first entered node from Queue
         bfsQ.pop();
-        
-        if(!visited[curr])
-        {
-            visited[curr]=true;
-            cout<<curr<<" ";
-        }
 
+        if(visited[curr]) continue;        
+
+        visited[curr]=true;
+            cout<<curr<<" ";
+        
         for(auto neighbor : graph[curr])
         {
-            if(!visited[neighbor])
-            {
-                bfsQ.push(neighbor);
-            }
+            bfsQ.push(neighbor);            
         }
     }
     cout<<endl;
