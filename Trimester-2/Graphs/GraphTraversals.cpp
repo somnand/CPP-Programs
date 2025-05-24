@@ -15,8 +15,7 @@ void dfs(vector<int> graph[],int verticeSize,int currNode,bool visited[])
     for(int i=0;i<graph[currNode].size();i++)
     {
         int neighbor = graph[currNode][i];
-        if(!visited[neighbor])
-            dfs(graph,verticeSize,neighbor,visited);
+        dfs(graph,verticeSize,neighbor,visited);
     }
 }
 
@@ -31,7 +30,7 @@ void dfsIterative(vector<int> graph[],int verticeSize,int source)
         int curr = dfsStk.top();//Fetching the first entered node from Stack
         dfsStk.pop();
         
-        if(visited[curr]) continue;
+        if(visited[curr]) continue; //This condition is same as the recursion base case
 
         visited[curr]=true;
         cout<<curr<<" ";
@@ -40,7 +39,6 @@ void dfsIterative(vector<int> graph[],int verticeSize,int source)
         {
             dfsStk.push(neighbor);            
         }
-        
     }
     cout<<endl;
 }

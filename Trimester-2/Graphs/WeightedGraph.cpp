@@ -1,38 +1,35 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
 int mstUsingPrimsAlgo(int V,vector<pair<int,int>> graph[])
 {
-    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> minHeap;
      
-    vector<int> visited(V,0);
+    bool visited[V]={false};
     int mst=0;
     
-    pq.push({0,0});
+    minHeap.push({0,0});
      
-    while(!pq.empty())
+    while(!minHeap.empty())
     {
-        pair<int,int> temp=pq.top();
-        pq.pop();
+        pair<int,int> temp=minHeap.top();
+        minHeap.pop();
         
         int wt=temp.first;
         int node=temp.second;
         
-        if(visited[node]==1) continue;//Skip all the remaining to avoid cycle
+        if(visited[node]) continue;//Skip all the remaining to avoid cycle
 
-        visited[node]=1;
+        cout<<node<<" ";
+        visited[node]=true;
         mst+=wt;
         
-        for(int i=0;i<graph[node].size();i++)//Exploring all neighbors of Node
+        for(auto neighbor : graph[node])//Exploring all neighbors of Node
         {
-            int edgewt=graph[node][i].first;
-            int adjnode=graph[node][i].second;
+            int neighborNode = neighbor.second;
             
-            if(!visited[adjnode])
-            {
-                pq.push({edgewt,adjnode});
-            }
+            if(!visited[neighborNode])
+                minHeap.push(neighbor);
         }
     }
     return mst;
